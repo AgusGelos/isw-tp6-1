@@ -1,0 +1,110 @@
+<div class="container">
+  <h3 class="text-center">Selecciona tu forma de pago:</h3>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary col-sm-3" (click)="efectiv()">Efectivo</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-secondary col-sm-3"(click)="td()">Tarjeta</button>
+                </div>
+                <hr>
+                
+                <div class="efectivo" *ngIf="efectivo">
+                  <form name="FormEfectivo" [formGroup]='FormEfectivo'>
+                  <fieldset>
+                    <h4 class="text-center">Efectivo</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="text">Con cuanto pagas:</label>
+                           <input type="text" class="form-control" formControlName="Abonado" 
+         [ngClass]="{'is-invalid': (FormEfectivo.controls.Abonado.touched || submitted)  
+            && FormEfectivo.controls.Abonado.errors}" />
+				<span class="text-danger" *ngIf="(FormEfectivo.controls.Abonado.touched || submitted) 
+                        && FormEfectivo.controls.Abonado.errors?.required">
+                    Dato requerido.
+                </span>
+                <span class="text-danger" *ngIf="(FormEfectivo.controls.Abonado.touched || submitted) 
+               && FormEfectivo.controls.Abonado.errors?.pattern">
+                    Dato numérico, 1 a 7 dígitos.
+                </span>     
+             </div>
+             
+                        </div>
+                    </div>
+                    </fieldset>
+                  </form>
+                </div>
+    
+                <div class="tarjeta" *ngIf="tarjeta">
+                    <h4 class="text-center">Tarjeta</h4>
+                    <form name="FormTarjeta" [formGroup]='FormTarjeta'>
+                      <fieldset>
+                    <div class="form-group">
+                        <label for="text">Nombre y Apellido:</label>
+                        <input type="text" class="form-control" placeholder="Nombre y Apellido" formControlName="Name" 
+         [ngClass]="{'is-invalid': (FormTarjeta.controls.Name.touched || submitted)  
+            && FormTarjeta.controls.Name.errors}" />
+				<span class="text-danger" *ngIf="(FormTarjeta.controls.Name.touched || submitted) 
+                        && FormTarjeta.controls.Name.errors?.required">
+                    Dato requerido.
+                </span>
+                <span class="text-danger" *ngIf="(FormTarjeta.controls.Name.touched || submitted) 
+                       && (FormTarjeta.controls.Name.errors?.minlength || FormTarjeta.controls.Name.errors?.maxlength) ">
+                    Dato texto, 4 a 55 caracteres.
+                </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Numero de tarjeta:</label>
+                        <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx"class="form-control" formControlName="Nro" 
+         [ngClass]="{'is-invalid': (FormTarjeta.controls.Nro.touched || submitted)  
+            && FormTarjeta.controls.Nro.errors}" />
+				<span class="text-danger" *ngIf="(FormTarjeta.controls.Nro.touched || submitted) 
+                        && FormTarjeta.controls.Nro.errors?.required">
+                    Dato requerido.
+                </span>
+                <span class="text-danger" *ngIf="(FormTarjeta.controls.Nro.touched || submitted) 
+                       &&   FormTarjeta.controls.Nro.errors?.pattern">
+                    Formato xxxx-xxxx-xxxx-xxxx, no olvides lo guiones.
+                </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">Fecha de vencimiento:</label>
+                        <input type="text" placeholder="xx-xxxx"class="form-control" formControlName="Fecha" 
+         [ngClass]="{'is-invalid': (FormTarjeta.controls.Fecha.touched || submitted)  
+            && FormTarjeta.controls.Fecha.errors}" />
+				<span class="text-danger" *ngIf="(FormTarjeta.controls.Fecha.touched || submitted) 
+                        && FormTarjeta.controls.Fecha.errors?.required">
+                    Dato requerido.
+                </span>
+                <span class="text-danger" *ngIf="(FormTarjeta.controls.Fecha.touched || submitted) 
+                       &&   FormTarjeta.controls.Fecha.errors?.pattern">
+                    Formato xx-xxxx, no olvides lo guiones.
+                </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">CRC:</label>
+                        <input type="text" placeholder="CRC"class="form-control" formControlName="Crc" 
+         [ngClass]="{'is-invalid': (FormTarjeta.controls.Crc.touched || submitted)  
+            && FormTarjeta.controls.Crc.errors}" />
+				<span class="text-danger" *ngIf="(FormTarjeta.controls.Crc.touched || submitted) 
+                        && FormTarjeta.controls.Crc.errors?.required">
+                    Dato requerido.
+                </span>
+                <span class="text-danger" *ngIf="(FormTarjeta.controls.Crc.touched || submitted) 
+                       &&   FormTarjeta.controls.Crc.errors?.pattern">
+                    Formato xxx, sólo numeros.
+                </span>
+                    </div>
+                    </fieldset>
+                    </form>
+                </div>
+
+                <div class="row justify-content-center">
+                <button type="button" class="btn btn-warning col-sm-3" routerLink="/destino">
+                    <span class="fas fa-undo">Anterior</span>
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-primary col-sm-3" (click)="submit()">Confirmar Pedido</button>
+                </div>
+
+
+</div>
