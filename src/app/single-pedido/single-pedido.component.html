@@ -24,8 +24,8 @@
                             <select class="form-control" name="ciudad" id="ciudad">
                                 <option disabled>----Ciudad----</option>
                                 <option>Córdoba</option>
-                                <option>Buenos Aires</option>
-                                <option>Mendoza</option>
+                                <option>Villa Allende</option>
+                                <option>Rio Ceballos</option>
                             </select>
                         </div>
                         <div class="col-sm-12">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-12">
-                            <input type="text" placeholder="Monto"class="form-control" formControlName="MontoOrigen" 
+                            <input id="MontoOrigen" type="text" placeholder="Monto"class="form-control" formControlName="MontoOrigen" 
          [ngClass]="{'is-invalid': (FormOrigen.controls.MontoOrigen.touched || ListoOrigen)  
             && FormOrigen.controls.MontoOrigen.errors}" />
 				<span class="text-danger" *ngIf="(FormOrigen.controls.MontoOrigen.touched || ListoOrigen || Mapa) 
@@ -134,7 +134,7 @@
           <div>
             <div class="row justify-content-center">            
             
-            <button type="button" class="btn btn-warning" (click)="mapa()">
+            <button type="button" class="btn btn-warning" routerLink="/mapa" (click)="mapa()">
                 <span class="fas fa-undo" >Seleccionar en el Mapa</span>
             </button>
             &nbsp;
@@ -329,7 +329,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="text">Con cuanto pagas:</label>
-                           <input type="text" class="form-control" formControlName="Abonado" 
+                           <input type="text" class="form-control" formControlName="Abonado" id="MontoAbonado"
          [ngClass]="{'is-invalid': (FormEfectivo.controls.Abonado.touched || submitted)  
             && FormEfectivo.controls.Abonado.errors}" />
 				<span class="text-danger" *ngIf="(FormEfectivo.controls.Abonado.touched || submitted) 

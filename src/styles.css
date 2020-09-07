@@ -1,1 +1,4 @@
 /* Add application styles & imports to this file! */
+body {
+  background-color: #FFE5E5 !important;
+}

@@ -15,6 +15,7 @@ export class SinglePedidoComponent implements OnInit {
   GotoDestino: boolean;
   GotoMapa: boolean;
   Mapa: boolean;
+  MontoOrigen;
 
   //---------------------------Destino
   calendar: boolean;
@@ -83,6 +84,7 @@ export class SinglePedidoComponent implements OnInit {
       return;
     }
     else{
+    this.MontoOrigen = parseInt((document.getElementById("MontoOrigen") as HTMLInputElement).value)
     this.GotoDestino=true; 
     }
   }
@@ -119,6 +121,7 @@ export class SinglePedidoComponent implements OnInit {
     this.tarjeta = true;
     this.efectivo= false;
   }
+
   submit(){
     
     this.submitted = true;
@@ -135,9 +138,15 @@ export class SinglePedidoComponent implements OnInit {
         return;
       }
       else{
+
+        if(this.MontoOrigen > parseInt((document.getElementById("MontoAbonado") as HTMLInputElement).value)){
+          console.log("Monto incorrecto");
+          return;
+        }        
         console.log("Subido");
       }
     }
+
   }
 
   formaPago(){
@@ -146,6 +155,13 @@ export class SinglePedidoComponent implements OnInit {
       return;      
     }
     else{
+
+      if(!this.calendar){
+        this.pasarFP = true;
+        this.GotoDestino = false;
+        return;
+      }      
+
       var pedido = (document.getElementById("day") as HTMLInputElement).value;
       let diaPedido = pedido.toString().split("-") ;
       var horaPedido = (document.getElementById("hh") as HTMLInputElement).value;

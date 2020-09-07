@@ -12,10 +12,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { AppMenuComponent } from './app-menu/app-menu.component';
-import { PedidoComponent } from './pedido/pedido.component';
+
 import { MapaComponent } from './mapa/mapa.component';
-import { DestinoComponent } from './destino/destino.component';
-import { PagoComponent } from './app-menu/pago/pago.component';
+
 import { InicioComponent } from './app-menu/inicio/inicio.component';
 import { SinglePedidoComponent } from './single-pedido/single-pedido.component';
 
@@ -26,16 +25,14 @@ import { SinglePedidoComponent } from './single-pedido/single-pedido.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-      { path: 'inicio', component:  InicioComponent},
-      { path: 'destino', component: DestinoComponent  },
-      { path: 'pago', component: PagoComponent },
+      { path: 'inicio', component:  InicioComponent},        
       { path: 'mapa', component: MapaComponent },
-      { path: 'pedido', component: PedidoComponent },
+      
       {path: 'spedido',component: SinglePedidoComponent}
     ]),
         
   ],
-  declarations: [ AppComponent, HelloComponent, AppMenuComponent, PedidoComponent, MapaComponent, DestinoComponent, PagoComponent, InicioComponent, SinglePedidoComponent ],
+  declarations: [ AppComponent, HelloComponent, AppMenuComponent, MapaComponent,   InicioComponent, SinglePedidoComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
